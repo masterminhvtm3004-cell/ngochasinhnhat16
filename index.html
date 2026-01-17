@@ -1,77 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Chúc mừng sinh nhật Ngọc Hà 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#ffdde1, #ee9ca7);
-      text-align: center;
-      color: #fff;
-    }
-    h1 { margin-top: 40px; }
-    .card {
-      background: rgba(255,255,255,0.2);
-      margin: 20px;
-      padding: 20px;
-      border-radius: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li { margin: 6px 0; }
-    footer { margin: 30px 0; font-style: italic; }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Chúc mừng sinh nhật Ngọc Hà 💖</title>
 
-  <audio autoplay loop>
-    <source src="https://files.catbox.moe/1b0y8p.mp3" type="audio/mpeg">
-  </audio>
-
-  <h1>🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
-  <h2>Nguyễn Thị Ngọc Hà</h2>
-
-  <div class="card">
-    <p>
-      Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.<br>
-      Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.<br>
-      Cảm ơn em vì đã xuất hiện, để thế giới của anh trở nên dịu dàng hơn rất nhiều 💖
-    </p>
-    <p><b>— Vũ Trí Minh</b></p>
-  </div>
-
-  <div class="card">
-    <h3>💗 16 lý do anh yêu em</h3>
-    <ul>
-      <li>1. Vì nụ cười của em</li>
-      <li>2. Vì ánh mắt em</li>
-      <li>3. Vì em là chính em</li>
-      <li>4. Vì em quan tâm những điều nhỏ</li>
-      <li>5. Vì em làm anh thấy bình yên</li>
-      <li>6. Vì giọng nói em</li>
-      <li>7. Vì em làm anh cười nhiều hơn</li>
-      <li>8. Vì em xuất hiện đúng lúc</li>
-      <li>9. Vì em rất dễ thương</li>
-      <li>10. Vì em là điều đặc biệt</li>
-      <li>11. Vì em làm anh muốn tốt hơn</li>
-      <li>12. Vì nghĩ đến em là thấy ấm</li>
-      <li>13. Vì em là món quà đẹp nhất</li>
-      <li>14. Vì ở bên em anh là chính mình</li>
-      <li>15. Vì em là lý do để yêu thương</li>
-      <li>16. Vì em là Nguyễn Thị Ngọc Hà 💞</li>
-    </ul>
-  </div>
-
-  <footer>
-    💌 Happy Birthday 16th 💌
-  </footer>
-<!-- Hiệu ứng tim bay -->
 <style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(#ffdde1, #ee9ca7);
+  text-align: center;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Hiệu ứng chung */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tiêu đề phát sáng */
+h1 {
+  margin-top: 40px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff9aa2; }
+  to { text-shadow: 0 0 18px #ff4d6d; }
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.2);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* Danh sách lý do */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reason li {
+  opacity: 0;
+  margin: 6px 0;
+  animation: showLine 0.6s ease forwards;
+}
+
+@keyframes showLine {
+  to { opacity: 1; }
+}
+
+/* Footer */
+footer {
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Tim bay */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -91,8 +89,66 @@
   }
 }
 </style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/1b0y8p.mp3" type="audio/mpeg">
+</audio>
+
+<h1 class="fade-up">🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
+<h2 class="fade-up" style="animation-delay:0.5s">Nguyễn Thị Ngọc Hà</h2>
+
+<div class="card fade-up" style="animation-delay:1s">
+  <p id="typing"></p>
+  <p><b>— Vũ Trí Minh</b></p>
+</div>
+
+<div class="card">
+  <h3 class="fade-up" style="animation-delay:0.3s">💗 16 lý do anh yêu em</h3>
+  <ul class="reason">
+    <li style="animation-delay:0.2s">1. Vì nụ cười của em</li>
+    <li style="animation-delay:0.4s">2. Vì ánh mắt em</li>
+    <li style="animation-delay:0.6s">3. Vì em là chính em</li>
+    <li style="animation-delay:0.8s">4. Vì em quan tâm những điều nhỏ</li>
+    <li style="animation-delay:1s">5. Vì em làm anh thấy bình yên</li>
+    <li style="animation-delay:1.2s">6. Vì giọng nói em</li>
+    <li style="animation-delay:1.4s">7. Vì em làm anh cười nhiều hơn</li>
+    <li style="animation-delay:1.6s">8. Vì em xuất hiện đúng lúc</li>
+    <li style="animation-delay:1.8s">9. Vì em rất dễ thương</li>
+    <li style="animation-delay:2s">10. Vì em là điều đặc biệt</li>
+    <li style="animation-delay:2.2s">11. Vì em làm anh muốn tốt hơn</li>
+    <li style="animation-delay:2.4s">12. Vì nghĩ đến em là thấy ấm</li>
+    <li style="animation-delay:2.6s">13. Vì em là món quà đẹp nhất</li>
+    <li style="animation-delay:2.8s">14. Vì ở bên em anh là chính mình</li>
+    <li style="animation-delay:3s">15. Vì em là lý do để yêu thương</li>
+    <li style="animation-delay:3.2s">16. Vì em là Nguyễn Thị Ngọc Hà 💞</li>
+  </ul>
+</div>
+
+<footer class="fade-up" style="animation-delay:1s">
+  💌 Happy Birthday 16th 💌
+</footer>
 
 <script>
+// Typing effect
+const text = `Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.
+Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.
+Cảm ơn em vì đã xuất hiện, để thế giới của anh trở nên dịu dàng hơn rất nhiều 💖`;
+
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML +=
+      text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+    i++;
+    setTimeout(typing, 40);
+  }
+}
+typing();
+
+// Tim bay
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -101,12 +157,10 @@ function createHeart() {
   heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
   document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
+  setTimeout(() => heart.remove(), 6000);
 }
-
 setInterval(createHeart, 300);
 </script>
+
 </body>
 </html>
