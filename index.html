@@ -2,164 +2,255 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chúc mừng sinh nhật Ngọc Hà 💖</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(#ffdde1, #ee9ca7);
-  text-align: center;
-  color: #fff;
-  overflow-x: hidden;
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(-45deg,#ffdde1,#ee9ca7,#ffc3a0,#ffafbd);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* Hiệu ứng chung */
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1.2s ease forwards;
+/* MỞ KHÓA */
+#lock{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:inherit;
+  z-index:9999;
+}
+#lock input{
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+  font-size:16px;
+}
+#lock button{
+  margin-top:10px;
+  padding:12px 30px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* CHỮ CHẠY */
+#typingWrap{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+}
+#typingCard{
+  background:rgba(255,255,255,0.25);
+  padding:25px;
+  border-radius:20px;
+  max-width:85%;
+  font-size:18px;
 }
 
-/* Tiêu đề phát sáng */
-h1 {
-  margin-top: 40px;
-  animation: glow 2s infinite alternate;
+/* NỘI DUNG */
+#content{display:none}
+.card{
+  background:rgba(255,255,255,0.2);
+  margin:20px;
+  padding:20px;
+  border-radius:20px;
+}
+ul{list-style:none;padding:0}
+
+/* TIM */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:fly 6s linear forwards;
+}
+@keyframes fly{
+  to{transform:translateY(-110vh) scale(1.6);opacity:0}
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff9aa2; }
-  to { text-shadow: 0 0 18px #ff4d6d; }
+/* TIM NỔ */
+.spark{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:pink;
+  pointer-events:none;
 }
 
-/* Card */
-.card {
-  background: rgba(255,255,255,0.2);
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-/* Danh sách lý do */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.reason li {
-  opacity: 0;
-  margin: 6px 0;
-  animation: showLine 0.6s ease forwards;
-}
-
-@keyframes showLine {
-  to { opacity: 1; }
-}
-
-/* Footer */
-footer {
-  margin: 30px 0;
-  font-style: italic;
-}
-
-/* Tim bay */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 20px;
-  animation: floatUp 6s linear forwards;
-  color: #ff4d6d;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(1.5);
-    opacity: 0;
-  }
+/* PHÁO HOA */
+.firework{
+  position:fixed;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:yellow;
+  pointer-events:none;
 }
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
+<audio id="bgm">
   <source src="https://files.catbox.moe/1b0y8p.mp3" type="audio/mpeg">
 </audio>
 
-<h1 class="fade-up">🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
-<h2 class="fade-up" style="animation-delay:0.5s">Nguyễn Thị Ngọc Hà</h2>
-
-<div class="card fade-up" style="animation-delay:1s">
-  <p id="typing"></p>
-  <p><b>— Vũ Trí Minh</b></p>
+<!-- MỞ KHÓA -->
+<div id="lock">
+  <h2>🔒 Nhập mật mã</h2>
+  <p>(Ngày sinh của em 💕)</p>
+  <input id="pass" placeholder="••••••••">
+  <button onclick="unlock()">Mở khóa</button>
 </div>
 
-<div class="card">
-  <h3 class="fade-up" style="animation-delay:0.3s">💗 16 lý do anh yêu em</h3>
-  <ul class="reason">
-    <li style="animation-delay:0.2s">1. Vì nụ cười của em</li>
-    <li style="animation-delay:0.4s">2. Vì ánh mắt em</li>
-    <li style="animation-delay:0.6s">3. Vì em là chính em</li>
-    <li style="animation-delay:0.8s">4. Vì em quan tâm những điều nhỏ</li>
-    <li style="animation-delay:1s">5. Vì em làm anh thấy bình yên</li>
-    <li style="animation-delay:1.2s">6. Vì giọng nói em</li>
-    <li style="animation-delay:1.4s">7. Vì em làm anh cười nhiều hơn</li>
-    <li style="animation-delay:1.6s">8. Vì em xuất hiện đúng lúc</li>
-    <li style="animation-delay:1.8s">9. Vì em rất dễ thương</li>
-    <li style="animation-delay:2s">10. Vì em là điều đặc biệt</li>
-    <li style="animation-delay:2.2s">11. Vì em làm anh muốn tốt hơn</li>
-    <li style="animation-delay:2.4s">12. Vì nghĩ đến em là thấy ấm</li>
-    <li style="animation-delay:2.6s">13. Vì em là món quà đẹp nhất</li>
-    <li style="animation-delay:2.8s">14. Vì ở bên em anh là chính mình</li>
-    <li style="animation-delay:3s">15. Vì em là lý do để yêu thương</li>
-    <li style="animation-delay:3.2s">16. Vì em là Nguyễn Thị Ngọc Hà 💞</li>
-  </ul>
+<!-- CHỮ CHẠY -->
+<div id="typingWrap">
+  <div id="typingCard">
+    <p id="typing"></p>
+  </div>
 </div>
 
-<footer class="fade-up" style="animation-delay:1s">
-  💌 Happy Birthday 16th 💌
-</footer>
+<!-- NỘI DUNG -->
+<div id="content">
+  <h1>🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
+  <h2>Nguyễn Thị Ngọc Hà</h2>
+
+  <div class="card">
+    Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.<br>
+    Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.<br>
+    Cảm ơn em vì đã xuất hiện 💖
+    <p><b>— Vũ Trí Minh</b></p>
+  </div>
+
+  <div class="card">
+    <h3>💗 16 lý do anh yêu em</h3>
+    <ul>
+      <li>1. Vì nụ cười của em</li>
+      <li>2. Vì ánh mắt em</li>
+      <li>3. Vì em là chính em</li>
+      <li>4. Vì em quan tâm những điều nhỏ</li>
+      <li>5. Vì em làm anh thấy bình yên</li>
+      <li>6. Vì giọng nói em</li>
+      <li>7. Vì em làm anh cười nhiều hơn</li>
+      <li>8. Vì em xuất hiện đúng lúc</li>
+      <li>9. Vì em rất dễ thương</li>
+      <li>10. Vì em là điều đặc biệt</li>
+      <li>11. Vì em làm anh muốn tốt hơn</li>
+      <li>12. Vì nghĩ đến em là thấy ấm</li>
+      <li>13. Vì em là món quà đẹp nhất</li>
+      <li>14. Vì ở bên em anh là chính mình</li>
+      <li>15. Vì em là lý do để yêu thương</li>
+      <li>16. Vì em là Nguyễn Thị Ngọc Hà 💞</li>
+    </ul>
+  </div>
+
+  <footer>💌 Happy Birthday 16th 💌</footer>
+</div>
 
 <script>
-// Typing effect
-const text = `Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.
-Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.
-Cảm ơn em vì đã xuất hiện, để thế giới của anh trở nên dịu dàng hơn rất nhiều 💖`;
+/* MỞ KHÓA */
+function unlock(){
+  if(document.getElementById("pass").value==="06022010"){
+    document.getElementById("lock").style.display="none";
+    start();
+  }else alert("Sai mật mã 💔");
+}
 
-let i = 0;
-function typing() {
-  if (i < text.length) {
-    document.getElementById("typing").innerHTML +=
-      text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
-    i++;
-    setTimeout(typing, 40);
+/* CHỮ CHẠY */
+const lines=[
+  "Tuổi 16 của em đến rồi 💕",
+  "Mang theo nụ cười làm tim anh rung lên",
+  "Anh không hứa điều gì lớn lao",
+  "Chỉ hứa sẽ trân trọng em",
+  "Cảm ơn em vì đã xuất hiện 💖",
+  "— Vũ Trí Minh"
+];
+let l=0,c=0;
+function start(){
+  const bgm=document.getElementById("bgm");
+  bgm.play().catch(()=>{});
+  bgm.volume=0;let v=0;
+  const fade=setInterval(()=>{v+=0.02;bgm.volume=v;if(v>=1)clearInterval(fade)},100);
+
+  document.getElementById("typingWrap").style.display="flex";
+  type();
+}
+function type(){
+  const el=document.getElementById("typing");
+  if(c<lines[l].length){
+    el.innerHTML+=lines[l][c++];
+    setTimeout(type,50);
+  }else{
+    setTimeout(()=>{
+      el.innerHTML="";c=0;l++;
+      if(l<lines.length) type();
+      else{
+        document.getElementById("typingWrap").style.display="none";
+        document.getElementById("content").style.display="block";
+      }
+    },1200);
   }
 }
-typing();
 
-// Tim bay
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-  document.body.appendChild(heart);
+/* TIM BAY */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},250);
 
-  setTimeout(() => heart.remove(), 6000);
-}
-setInterval(createHeart, 300);
+/* TIM NỔ */
+document.addEventListener("click",e=>{
+  for(let i=0;i<12;i++){
+    const s=document.createElement("div");
+    s.className="spark";
+    s.style.left=e.clientX+"px";
+    s.style.top=e.clientY+"px";
+    document.body.appendChild(s);
+    const x=(Math.random()-0.5)*120;
+    const y=(Math.random()-0.5)*120;
+    s.animate([{transform:"translate(0,0)",opacity:1},{transform:`translate(${x}px,${y}px)`,opacity:0}],{duration:600});
+    setTimeout(()=>s.remove(),600);
+  }
+});
+
+/* PHÁO HOA */
+setInterval(()=>{
+  for(let i=0;i<20;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top="80vh";
+    document.body.appendChild(f);
+    const x=(Math.random()-0.5)*200;
+    const y=Math.random()*-300;
+    f.animate([{transform:"translate(0,0)",opacity:1},{transform:`translate(${x}px,${y}px)`,opacity:0}],{duration:1200});
+    setTimeout(()=>f.remove(),1200);
+  }
+},3500);
 </script>
 
 </body>
