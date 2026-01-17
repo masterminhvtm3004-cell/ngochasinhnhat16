@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc mừng sinh nhật Ngọc Hà 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffdde1, #ee9ca7);
+      text-align: center;
+      color: #fff;
+    }
+    h1 { margin-top: 40px; }
+    .card {
+      background: rgba(255,255,255,0.2);
+      margin: 20px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li { margin: 6px 0; }
+    footer { margin: 30px 0; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/1b0y8p.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
+  <h2>Nguyễn Thị Ngọc Hà</h2>
+
+  <div class="card">
+    <p>
+      Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.<br>
+      Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.<br>
+      Cảm ơn em vì đã xuất hiện, để thế giới của anh trở nên dịu dàng hơn rất nhiều 💖
+    </p>
+    <p><b>— Vũ Trí Minh</b></p>
+  </div>
+
+  <div class="card">
+    <h3>💗 16 lý do anh yêu em</h3>
+    <ul>
+      <li>1. Vì nụ cười của em</li>
+      <li>2. Vì ánh mắt em</li>
+      <li>3. Vì em là chính em</li>
+      <li>4. Vì em quan tâm những điều nhỏ</li>
+      <li>5. Vì em làm anh thấy bình yên</li>
+      <li>6. Vì giọng nói em</li>
+      <li>7. Vì em làm anh cười nhiều hơn</li>
+      <li>8. Vì em xuất hiện đúng lúc</li>
+      <li>9. Vì em rất dễ thương</li>
+      <li>10. Vì em là điều đặc biệt</li>
+      <li>11. Vì em làm anh muốn tốt hơn</li>
+      <li>12. Vì nghĩ đến em là thấy ấm</li>
+      <li>13. Vì em là món quà đẹp nhất</li>
+      <li>14. Vì ở bên em anh là chính mình</li>
+      <li>15. Vì em là lý do để yêu thương</li>
+      <li>16. Vì em là Nguyễn Thị Ngọc Hà 💞</li>
+    </ul>
+  </div>
+
+  <footer>
+    💌 Happy Birthday 16th 💌
+  </footer>
+
+</body>
+</html>
