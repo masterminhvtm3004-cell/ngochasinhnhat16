@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chúc mừng sinh nhật Ngọc Hà 💖</title>
+<title>Happy Birthday 💖</title>
 
 <style>
+/* ===== BACKGROUND ===== */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:linear-gradient(-45deg,#ffdde1,#ee9ca7,#ffc3a0,#ffafbd);
   background-size:400% 400%;
   animation:bg 12s ease infinite;
-  color:#fff;
+  color:white;
   text-align:center;
   overflow:hidden;
 }
@@ -22,25 +23,26 @@ body{
   100%{background-position:0% 50%}
 }
 
-/* MỞ KHÓA */
+/* ===== LOCK ===== */
 #lock{
   position:fixed; inset:0;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  background:rgba(0,0,0,0.4);
   z-index:9999;
 }
 #lock input{
   padding:12px;
-  border-radius:20px;
   border:none;
+  border-radius:20px;
   text-align:center;
   font-size:16px;
 }
 #lock button{
   margin-top:12px;
-  padding:12px 32px;
+  padding:12px 28px;
   border:none;
   border-radius:25px;
   background:#ff4d6d;
@@ -48,7 +50,7 @@ body{
   font-size:16px;
 }
 
-/* CHỮ CHẠY */
+/* ===== TYPING ===== */
 #typingWrap{
   display:none;
   height:100vh;
@@ -63,73 +65,98 @@ body{
   font-size:18px;
 }
 
-/* NỘI DUNG */
+/* ===== CONTENT ===== */
 #content{display:none}
+
 .card{
   background:rgba(255,255,255,0.2);
   margin:20px;
   padding:20px;
   border-radius:20px;
 }
+
 ul{list-style:none;padding:0}
 
-/* TIM BAY */
+/* ===== ẢNH ===== */
+.couple{
+  width:180px;
+  border-radius:20px;
+  margin-top:20px;
+  box-shadow:0 0 20px rgba(255,255,255,0.7);
+}
+
+/* ===== MUSIC BTN ===== */
+.musicBtn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#ff4d6d;
+  border:none;
+  padding:10px 14px;
+  border-radius:50%;
+  color:white;
+  font-size:18px;
+}
+
+/* ===== HEART ===== */
 .heart{
   position:fixed;
   bottom:-20px;
   font-size:22px;
   animation:fly 6s linear forwards;
-  pointer-events:auto;
 }
 @keyframes fly{
   to{transform:translateY(-110vh) scale(1.6);opacity:0}
 }
 
-/* MẢNH NỔ */
-.piece{
-  position:fixed;
-  font-size:12px;
-  pointer-events:none;
-}
-
-/* PHÁO HOA */
+/* ===== FIREWORK ===== */
 .fire{
   position:fixed;
   width:6px;
   height:6px;
   border-radius:50%;
-  pointer-events:none;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" playsinline>
+<!-- NHẠC -->
+<audio id="bgm" loop playsinline>
   <source src="https://files.catbox.moe/1b0y8p.mp3" type="audio/mpeg">
 </audio>
 
+<button class="musicBtn" onclick="toggleMusic()">🎵</button>
+
+<!-- KHÓA -->
 <div id="lock">
   <h2>🔒 Nhập mật mã</h2>
   <p>(Ngày sinh của em 💕)</p>
   <input id="pass" placeholder="••••••••">
-  <button id="unlockBtn">Mở khóa</button>
+  <button onclick="unlock()">Mở khóa</button>
 </div>
 
+<!-- TYPING -->
 <div id="typingWrap">
   <div id="typingCard">
     <p id="typing"></p>
   </div>
 </div>
 
+<!-- CONTENT -->
 <div id="content">
+
   <h1>🎂 Chúc mừng sinh nhật tuổi 16 💕</h1>
   <h2>Nguyễn Thị Ngọc Hà</h2>
 
+  <!-- ẢNH -->
+  <img src="https://i.imgur.com/8Km9tLL.jpg" class="couple">
+
   <div class="card">
-    Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày.<br>
-    Anh không hứa điều gì lớn lao, chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.<br>
-    Cảm ơn em vì đã xuất hiện 💖
+    Tuổi 16 của em đến rồi, mang theo nụ cười làm tim anh rung lên mỗi ngày 💖<br>
+    Anh không hứa điều gì lớn lao,<br>
+    Chỉ hứa sẽ luôn trân trọng em bằng tất cả những gì anh có.<br><br>
+    Cảm ơn em vì đã xuất hiện 🌸
     <p><b>— Vũ Trí Minh</b></p>
   </div>
 
@@ -155,23 +182,31 @@ ul{list-style:none;padding:0}
     </ul>
   </div>
 
-  <footer>💌 Happy Birthday 16th 💌</footer>
 </div>
 
 <script>
-/* MỞ KHÓA + NHẠC */
-document.getElementById("unlockBtn").onclick=()=>{
-  if(document.getElementById("pass").value!=="06022010"){
+
+/* ===== PASSWORD ===== */
+const correct = btoa("06022010");
+
+function unlock(){
+  if(btoa(pass.value)!==correct){
     alert("Sai mật mã 💔");return;
   }
-  const bgm=document.getElementById("bgm");
-  bgm.play();
-  document.getElementById("lock").style.display="none";
-  document.getElementById("typingWrap").style.display="flex";
-  typeText();
-};
 
-/* CHỮ CHẠY */
+  bgm.play().catch(()=>{});
+  lock.style.display="none";
+  typingWrap.style.display="flex";
+  typeText();
+}
+
+/* ===== MUSIC ===== */
+function toggleMusic(){
+  if(bgm.paused) bgm.play();
+  else bgm.pause();
+}
+
+/* ===== TYPING ===== */
 const lines=[
   "Tuổi 16 của em đến rồi 💕",
   "Mang theo nụ cười làm tim anh rung lên",
@@ -180,25 +215,27 @@ const lines=[
   "Cảm ơn em vì đã xuất hiện 💖",
   "— Vũ Trí Minh"
 ];
+
 let l=0,c=0;
+
 function typeText(){
-  const t=document.getElementById("typing");
   if(c<lines[l].length){
-    t.innerHTML+=lines[l][c++];
+    typing.innerHTML+=lines[l][c++];
     setTimeout(typeText,50);
   }else{
     setTimeout(()=>{
-      t.innerHTML="";c=0;l++;
+      typing.innerHTML="";
+      c=0;l++;
       if(l<lines.length) typeText();
       else{
-        document.getElementById("typingWrap").style.display="none";
-        document.getElementById("content").style.display="block";
+        typingWrap.style.display="none";
+        content.style.display="block";
       }
     },1200);
   }
 }
 
-/* TIM BAY */
+/* ===== HEART FLY ===== */
 setInterval(()=>{
   const h=document.createElement("div");
   h.className="heart";
@@ -207,61 +244,64 @@ setInterval(()=>{
   document.body.appendChild(h);
 
   h.onclick=(e)=>{
-    e.stopPropagation();
-    explodeHeart(e.clientX,e.clientY);
+    explode(e.clientX,e.clientY);
     h.remove();
   };
 
   setTimeout(()=>h.remove(),6000);
-},180);
+},300);
 
-/* TIM NỔ ĐẸP */
-function explodeHeart(x,y){
-  const colors=["#ff4d6d","#ff9aa2","#ffd166","#c77dff","#ff758f"];
-  for(let i=0;i<24;i++){
+/* ===== HEART EXPLODE ===== */
+function explode(x,y){
+  for(let i=0;i<20;i++){
     const p=document.createElement("div");
-    p.className="piece";
-    p.innerHTML="❤️";
-    p.style.color=colors[Math.floor(Math.random()*colors.length)];
+    p.innerHTML="💖";
+    p.style.position="fixed";
     p.style.left=x+"px";
     p.style.top=y+"px";
     document.body.appendChild(p);
+
     const angle=Math.random()*2*Math.PI;
-    const r=80+Math.random()*60;
+    const r=80+Math.random()*40;
     const dx=Math.cos(angle)*r;
     const dy=Math.sin(angle)*r;
+
     p.animate([
-      {transform:"translate(0,0) scale(1)",opacity:1},
-      {transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*360}deg) scale(0.4)`,opacity:0}
-    ],{duration:800,easing:"ease-out"});
+      {transform:"translate(0,0)",opacity:1},
+      {transform:`translate(${dx}px,${dy}px)`,opacity:0}
+    ],{duration:800});
+
     setTimeout(()=>p.remove(),800);
   }
 }
 
-/* PHÁO HOA RỰC RỠ */
+/* ===== FIREWORK ===== */
 setInterval(()=>{
-  const cx=Math.random()*window.innerWidth;
-  const cy=Math.random()*window.innerHeight*0.5;
-  const colors=["#ff4d6d","#ffd166","#c77dff","#4cc9f0","#ff9aa2"];
-  for(let i=0;i<36;i++){
+  const cx=Math.random()*innerWidth;
+  const cy=Math.random()*innerHeight*0.5;
+
+  for(let i=0;i<30;i++){
     const f=document.createElement("div");
     f.className="fire";
-    f.style.background=colors[Math.floor(Math.random()*colors.length)];
+    f.style.background=`hsl(${Math.random()*360},100%,60%)`;
     f.style.left=cx+"px";
     f.style.top=cy+"px";
     document.body.appendChild(f);
-    const angle=(i/36)*2*Math.PI;
-    const r=120+Math.random()*40;
+
+    const angle=(i/30)*2*Math.PI;
+    const r=120;
     const dx=Math.cos(angle)*r;
     const dy=Math.sin(angle)*r;
+
     f.animate([
       {transform:"translate(0,0)",opacity:1},
       {transform:`translate(${dx}px,${dy}px)`,opacity:0}
     ],{duration:1200});
+
     setTimeout(()=>f.remove(),1200);
   }
-},3200);
-</script>
+},3500);
 
+</script>
 </body>
 </html>
